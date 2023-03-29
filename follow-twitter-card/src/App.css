@@ -107,8 +107,10 @@
   color: #52565b;
   font-size: 14px;
 }
+.icon-points {
+  padding: .6rem .7rem .6rem;
+  border-radius: 50%;
+}
 .icon-points:hover {
-  padding: .7rem;
-  border-radius: 50px;
   background-color: rgba(40, 147, 209,.8);
 }
