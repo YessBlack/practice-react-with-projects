@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import confetti from 'canvas-confetti'
 import './App.css'
 import { Square } from './components/Square'
@@ -6,11 +6,21 @@ import { checkWinnerFrom } from './logic/board'
 import { TURNS } from './constants'
 import { WinnerModal } from './components/WinnerModal'
 import { checkEndGame } from './logic/checkEndGame'
+import { resetGameStorage, saveGameStorage } from './logic/storage'
 
 
 function App() {
-  const [board, setBoard] = useState(Array(9).fill(null))
-  const [turn, setTurn] = useState(TURNS.X)
+  const [board, setBoard] = useState(() => {
+    const boardFromStorage = window.localStorage.getItem('board')
+    if (boardFromStorage) return JSON.parse(boardFromStorage) 
+    return Array(9).fill(null)
+  })
+
+  const [turn, setTurn] = useState(() => {
+    const turnFromStorage = window.localStorage.getItem('turn')
+    return turnFromStorage ?? TURNS.X
+  })
+
   const [winner, setWinner] = useState(null)
 
   const updateBoard = (index) => {
@@ -21,6 +31,11 @@ function App() {
 
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X  
     setTurn(newTurn)
+
+    saveGameStorage({
+      board: newBoard,
+      turn: newTurn
+    })
 
     const newWinner = checkWinnerFrom(newBoard)
 
@@ -36,11 +51,13 @@ function App() {
     setBoard(Array(9).fill(null))
     setTurn(TURNS.X)
     setWinner(null)
+
+    resetGameStorage()
   }
- 
+
   return (
     <main className='board'>
-      <button onCLick={resetGame}>Reset del juego</button>
+      <button onClick={resetGame}>Reset del juego</button>
       <h1>Tic tac toe</h1>
       <section className='game'>
         {
