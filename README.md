@@ -1,6 +1,8 @@
 ## Práctica de React con proyectos
 
-![](https://media.giphy.com/media/bGgsc5mWoryfgKBx1u/giphy.gif)
+<div align="center">
+  <img src="https://media.giphy.com/media/bGgsc5mWoryfgKBx1u/giphy.gif" />
+</div>
 
 Este repositorio nace como un lugar para practicar y mejorar mis habilidades en React, pero también puede ser utilizado por otros programadores para aprender y replicar los proyectos. Cada proyecto tiene su propia carpeta dentro del monorepositorio, lo que hace que sea fácil encontrar el proyecto específico que te interesa. No dudes en explorar el código y hacer tus propias modificaciones o mejoras. ¡Esperamos que estos proyectos te ayuden a mejorar tus habilidades en React!
 
