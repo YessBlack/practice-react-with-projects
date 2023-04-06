@@ -1,6 +1,6 @@
 export function Header () {
   return (
-    <header className='flex justify-between w-[500px] mt-[20px] items-center'>
+    <header className='flex justify-between w-[500px] mt-[30px] items-center'>
       <button className='bg-button-color text-white p-2 rounded-full w-[80px]'>MENU</button>
       <div className='flex flex-col gap-1'>
         <div className='flex gap-1'>
