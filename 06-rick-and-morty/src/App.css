@@ -1,0 +1,62 @@
+/* ----------- Card --------- */
+.card {
+  background-color: #3c3e44;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  border-radius: 10px;
+  margin: 1rem;
+  width: 100%;
+  max-width: 500px;
+  line-height: 1.3rem;
+}
+.card img {
+  width: 200px;
+  border-radius: 10px  0px  0px 10px;
+}
+.card__description {
+  margin-left: 1rem;
+}
+.card__status {
+  line-height: 1.7rem;
+}
+.card__status h1 {
+  font-family: 'Tilt Warp', cursive;
+  letter-spacing: 1px;
+}
+.alive, .dead {
+  color: yellowgreen;
+  font-size: 5rem;
+}
+.dead {
+  color: red;
+}
+.status__card {
+  display: flex;
+}
+.status__card span {
+  margin-top: -1.5rem;
+}
+.information {
+  color: #ccc;
+}
+.content-information {
+  margin-top: .5rem;
+}
+
+@media (max-width: 647px) {
+  .card  {
+    flex-direction: column;
+    align-items: start;
+  }
+  .card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px 10px 0px 0px;
+  }
+  .card__description {
+    margin-left: 0px;
+    padding: 1rem;
+  }
+}
