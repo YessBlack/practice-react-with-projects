@@ -1,4 +1,92 @@
+/* ----------- Header --------- */
+.header {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100vh;
+}
+.header h1 {
+  color: #fff;
+  font-family: 'Tilt Warp', cursive;
+  letter-spacing: 1px;
+  margin: 2rem;
+  font-size: 2.4rem;
+  animation: rick-and-morty 2s linear infinite;
+}
+.header span {
+  color: #ccc;
+  font-size: 3rem;
+  position: relative;
+  font-size: 2rem;
+  animation: jump 1.3s infinite;
+  width: 50px;
+  height: 50px;
+  padding: .5rem;
+}
+
+.header span:hover {
+  animation: none;
+  color: #fff;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  padding: .5rem;
+}
+.elemento-animado {
+  position: relative;
+  top: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.deslizar {
+  transform: translateY(-100%);
+}
+
+/* ----------- Arrow up --------- */
+.arrow-up {
+  position:fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  animation: rick-and-morty 2s linear infinite;
+}
+
 /* ----------- Card --------- */
+@keyframes rick-and-morty {
+  0% { color: #99CC00; }
+  25% { color: #FF9933; }
+  50% { color: #FFCC00; }
+  75% { color: #00CCFF; }
+  100% { color: #9933FF; }
+}
+@keyframes jump {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: -5px;
+  }
+  50% {
+    top: 0;
+  }
+  75% {
+    top: -2.5px;
+  }
+  100% {
+    top: 0;
+  }
+}
 .card {
   background-color: #3c3e44;
   display: flex;

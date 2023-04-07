@@ -2,6 +2,7 @@ import './App.css'
 import { useCharacters } from './hooks/useCharacters'
 import { useEffect } from 'react'
 import { Card } from './components/Card'
+import { Header } from './components/Header'
 import { useInfiniteScroll } from './hooks/useInfiniteScroll'
 
 function App () {
@@ -13,8 +14,16 @@ function App () {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [db])
 
+
   return (
-    <div className='App'>
+    <>
+    <Header />
+    {/**
+     * TODO: Button in the bottom of the page to back to the top
+     */}
+
+     {/* <span className='icon-angle-up arrow-up'></span> */ }
+     <div className='App'>
       {
         db.map(el => {
           return (
@@ -30,6 +39,8 @@ function App () {
         })
       }
     </div>
+    </>
+    
   )
 }
 
