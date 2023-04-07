@@ -1,7 +1,7 @@
 export function Card ({ img, name, status, location, species }) {
   const classNameStatus = status === 'Alive' ? 'alive' : 'dead'
   return (
-    <article className='card'>
+    <article className='card' id="card">
       <img src={img} alt={name} />
       <div className='card__description'>
         <div className='card__status'>

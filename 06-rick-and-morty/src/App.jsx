@@ -1,20 +1,18 @@
-import { useEffect, useState } from 'react'
 import './App.css'
+import { useCharacters } from './hooks/useCharacters'
+import { useEffect } from 'react'
 import { Card } from './components/Card'
+import { useInfiniteScroll } from './hooks/useInfiniteScroll'
 
 function App () {
-  const [db, setDb] = useState([])
+  const { db, loadMore } = useCharacters()
+  const { handleScroll } = useInfiniteScroll(loadMore, true)
 
   useEffect(() => {
-    const getData = async () => {
-      const res = await fetch('https://rickandmortyapi.com/api/character')
-      const results = await res.json()
-      setDb(results.results)
-    }
-    getData()
-  }, [])
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [db])
 
-  console.log(db)
   return (
     <div className='App'>
       {
