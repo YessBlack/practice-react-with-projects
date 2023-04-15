@@ -1,0 +1,65 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  background-color: black;
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+button, input {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 800px;
+}
+
+img {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.search {
+  padding: .7rem;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  width: 180px;
+}
+.btn-search {
+  border-radius: 5px;
+  padding: .7rem;
+  background-color: rgb(174, 22, 245);
+  border: none;
+  color: white;
+}
+
+.videogames {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid white;
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.videogame {
+  text-align: center;
+}
