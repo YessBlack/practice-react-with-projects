@@ -1,144 +1,17 @@
-import { useEffect, useState } from 'react'
 import { Player } from './Player'
-
-const TURNS = {
-  PLAYER_ONE: 1,
-  PLAYER_TWO: 2
-}
+import { Winner } from './Winner'
+import { useBoard } from '../hooks/useBoard'
+import { TURNS } from '../constants/TURNS'
+import { useMoveMouse } from '../hooks/useMoveMouse'
+import { Header } from './Header'
 
 export function Board () {
-  const [board, setBoard] = useState(Array(42).fill(null))
-  const [position, setPosition] = useState({ x: 650 })
-  const [isInside, setIsInside] = useState(false)
-  const [turn, setTurn] = useState(TURNS.PLAYER_ONE)
-
-  useEffect(() => {
-    const handleMove = (event) => {
-      const { clientX } = event
-      if (isInside) {
-        setPosition({ x: clientX })
-      }
-    }
-
-    window.addEventListener('pointermove', handleMove)
-
-    return () => {
-      window.removeEventListener('pointermove', handleMove)
-    }
-  }, [isInside])
-
-  const handleMouseEnter = () => {
-    setIsInside(true)
-  }
-
-  const handleMouseLeave = () => {
-    setIsInside(false)
-  }
-
-  const handleClickBoard = (i) => {
-    if (i >= 0 && i <= 5) {
-      for (let j = 5; j >= i; j--) {
-        if (board[j] === null) {
-          setBoard((prev) => {
-            const newBoard = [...prev]
-            newBoard[j] = turn
-            return newBoard
-          })
-          setTurn(turn === TURNS.PLAYER_ONE ? TURNS.PLAYER_TWO : TURNS.PLAYER_ONE)
-          return
-        }
-      }
-    }
-
-    if (i >= 6 && i <= 11) {
-      for (let j = 11; j >= i; j--) {
-        if (board[j] === null) {
-          setBoard((prev) => {
-            const newBoard = [...prev]
-            newBoard[j] = turn
-            return newBoard
-          })
-          setTurn(turn === TURNS.PLAYER_ONE ? TURNS.PLAYER_TWO : TURNS.PLAYER_ONE)
-          return
-        }
-      }
-    }
-
-    if (i >= 12 && i <= 17) {
-      for (let j = 17; j >= i; j--) {
-        if (board[j] === null) {
-          setBoard((prev) => {
-            const newBoard = [...prev]
-            newBoard[j] = turn
-            return newBoard
-          })
-          setTurn(turn === TURNS.PLAYER_ONE ? TURNS.PLAYER_TWO : TURNS.PLAYER_ONE)
-          return
-        }
-      }
-    }
-
-    if (i >= 18 && i <= 23) {
-      for (let j = 23; j >= i; j--) {
-        if (board[j] === null) {
-          setBoard((prev) => {
-            const newBoard = [...prev]
-            newBoard[j] = turn
-            return newBoard
-          })
-          setTurn(turn === TURNS.PLAYER_ONE ? TURNS.PLAYER_TWO : TURNS.PLAYER_ONE)
-          return
-        }
-      }
-    }
-
-    if (i >= 24 && i <= 29) {
-      for (let j = 29; j >= i; j--) {
-        if (board[j] === null) {
-          setBoard((prev) => {
-            const newBoard = [...prev]
-            newBoard[j] = turn
-            return newBoard
-          })
-          setTurn(turn === TURNS.PLAYER_ONE ? TURNS.PLAYER_TWO : TURNS.PLAYER_ONE)
-          return
-        }
-      }
-    }
-
-    if (i >= 30 && i <= 35) {
-      for (let j = 35; j >= i; j--) {
-        if (board[j] === null) {
-          setBoard((prev) => {
-            const newBoard = [...prev]
-            newBoard[j] = turn
-            return newBoard
-          })
-          setTurn(turn === TURNS.PLAYER_ONE ? TURNS.PLAYER_TWO : TURNS.PLAYER_ONE)
-          return
-        }
-      }
-    }
-
-    if (i >= 36 && i <= 41) {
-      for (let j = 41; j >= i; j--) {
-        if (board[j] === null) {
-          setBoard((prev) => {
-            const newBoard = [...prev]
-            newBoard[j] = turn
-            return newBoard
-          })
-          setTurn(turn === TURNS.PLAYER_ONE ? TURNS.PLAYER_TWO : TURNS.PLAYER_ONE)
-          return
-        }
-      }
-    }
-  }
-
-  console.log(board)
+  const { board, turn, winner, handleClickBoard, handleResetGame } = useBoard()
+  const { position, isInside, handleMouseEnter, handleMouseLeave } = useMoveMouse()
 
   return (
     <>
+      <Header resetGame={handleResetGame} />
       <div className='flex items-center gap-5 flex-wrap'>
         <div className={`${isInside ? 'cursor-pointer' : 'cursor-default'} absolute bg-player-one w-[30px] h-[30px] border-t-8 border-2 rounded-b-xl top-[90px] left-[10px]`} style={{ transform: `translate(${position.x}px)` }} />
         <Player
@@ -167,7 +40,11 @@ export function Board () {
           classNameBorder={turn === TURNS.PLAYER_TWO ? 'border-player-two' : ''}
         />
       </div>
+      {
+        winner && <Winner
+          numberPlayer={winner} resetGame={handleResetGame}
+                  />
+      }
     </>
-
   )
 }
