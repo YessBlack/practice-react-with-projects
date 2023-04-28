@@ -1,7 +1,6 @@
-import { useBoard } from '../hooks/useBoard'
 import { Player } from './Player'
 
-export function Winner ({ numberPlayer, resetGame }) {
+export function Winner ({ numberPlayer, resetGame, move }) {
   return (
     <>
       <section
@@ -13,7 +12,7 @@ export function Winner ({ numberPlayer, resetGame }) {
           <header className=''>
             {
               numberPlayer === 1 || numberPlayer === 2
-                ? <Player numberPlayer={numberPlayer} move={4} />
+                ? <Player numberPlayer={numberPlayer} move={move} />
                 : <p className='text-white'>Empate</p>
             }
           </header>
